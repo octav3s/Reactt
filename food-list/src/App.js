@@ -1,26 +1,19 @@
-import "./App.css";
-import image from "./images/mohanlal.jpg"
-function App() {
-  let foodList = ["Good Morning", "Good Afternoon", "Good Evening", "Good Night", "Good Day"];
-function App() {
+function foodList() {
+  let food = ['Croissant', 'Noodles', 'Pasta', 'Salad', 'Burger'];
+
+  function showMessage(message) {
+    document.getElementById("message").innerText = message;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h3> Select a food that you love!</h3>
+      <ul>
+        {food.map((item, index) => <li key={index}>{item}
+          <button onClick={() => { showMessage(I Love ${ item }) }}>Click</button>
+        </li>)}
+      </ul>
+      <p id="message"></p>
     </div>
   );
 }
-
-export default App;
+export default foodList;
