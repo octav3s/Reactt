@@ -9,7 +9,7 @@ function foodList() {
       <h3> Select a food that you love!</h3>
       <ul>
         {food.map((item, index) => <li key={index}>{item}
-          <button onClick={() => { showMessage(I Love ${ item }) }}>Click</button>
+          <button onClick={() => { showMessage(`I Love ${ item }`) }}>Click</button>
         </li>)}
       </ul>
       <p id="message"></p>
