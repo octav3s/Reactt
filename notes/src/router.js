@@ -1,11 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import list from "./components/list";
-import 
+import Navbar from './navbar';
 import App from "./App";
 
 const router = createBrowserRouter([
-    { path: '', element: <App /> },
-    { path: 'aboutus', element: <Aboutus /> },
+    { path: '/', element: <App /> },
+    
 ]);
 
 export default router;

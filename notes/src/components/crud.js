@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from './Navbar';
+import Navbar from './navbar';
 
 function Crud() {
     var [items, setItems] = useState([
@@ -12,6 +12,7 @@ function Crud() {
 
     const [editingItemId, setEditingItemId] = useState(null);
     const [editedItemName, setEditedItemName] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
 
     const handleInputChange = (event) => {
         setItemName(event.target.value);
@@ -60,6 +61,19 @@ function Crud() {
     const handleDeleteItem = (itemId) => {
         const updatedItems = items.filter((item) => item.id !== itemId);
         setItems(updatedItems);
+    };
+
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        const filteredItems = items.filter((item) =>
+            item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setItems(filteredItems);
+    };
+
+    const handleResetSearch = () => {
+        setSearchTerm("");
     };
 
     return (
@@ -138,6 +152,17 @@ function Crud() {
                         ))}
                     </tbody>
                 </table>
+            </div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-8">
+                        <form onSubmit={handleSearch}>
+                            <label>Search Name: </label>
+                            <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />&nbsp;
+                            <button className="btn btn-small btn-success" type="submit">Search</button>&nbsp;
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     );
